@@ -1,3 +1,4 @@
+
 pipeline {
     agent any // window agent, Jenkins-laravel (other machine)
 
@@ -5,7 +6,7 @@ pipeline {
         stage('Fetch from GitHub') { //build steps
             steps {
                 echo 'Fetching for GitHub'
-                git branch: 'main' , url: 'https://github.com/Moniroth-03/laravelPro.git'
+                //git branch: 'main' , url: 'https://github.com/Moniroth-03/laravelPro.git'
             }
         }
         stage('Composer install') {
@@ -41,11 +42,11 @@ pipeline {
     }
 
     post {
-        // success {
-        //     sh 'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"1160695842\", \"text\": \"[SUCCESS] Ukata api build success!\", \"disable_notification\": false}\' https://api.telegram.org/bot6751032720:AAFdUFPbsOShMqa6njLDAF6inRD380ZyHAo/sendMessage'
-        // }
+        success {
+            sh 'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"1160695842\", \"text\": \"[SUCCESS] Ukata api build success!\", \"disable_notification\": false}\' https://api.telegram.org/bot6751032720:AAFdUFPbsOShMqa6njLDAF6inRD380ZyHAo/sendMessage'
+        }
         failure {
-            sh 'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"1160695842\", \"text\": \"[FAILED] Ukata api build failed!\", \"disable_notification\": false}\' https://api.telegram.org/bot6751032720:AAFdUFPbsOShMqa6njLDAF6inRD380ZyHAo/sendMessage'
+            sh 'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"1160695842\", \"text\": \"[FAILED] Ukata api build failed!\", "disable_notification": false}\' https://api.telegram.org/bot6751032720:AAFdUFPbsOShMqa6njLDAF6inRD380ZyHAo/sendMessage'
         }
     }
 }
