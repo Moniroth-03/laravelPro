@@ -46,7 +46,7 @@ pipeline {
             sh 'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"1160695842\", \"text\": \"[SUCCESS] Ukata api build success!\", \"disable_notification\": false}\' https://api.telegram.org/bot6751032720:AAFdUFPbsOShMqa6njLDAF6inRD380ZyHAo/sendMessage'
         }
         failure {
-            sh 'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"1160695842\", \"text\": \"[FAILED] Ukata api build failed!\", "disable_notification": false}\' https://api.telegram.org/bot6751032720:AAFdUFPbsOShMqa6njLDAF6inRD380ZyHAo/sendMessage'
+            sh 'curl -X POST -H "Content-Type: application/json" -d \'{\"chat_id\": \"1160695842\", \"text\": \"[FAILED] Ukata api build failed!\", \"disable_notification\": false}\' https://api.telegram.org/bot6751032720:AAFdUFPbsOShMqa6njLDAF6inRD380ZyHAo/sendMessage'
         }
     }
 }
